@@ -6,6 +6,15 @@ import tseslint from 'typescript-eslint'
 
 /** @type {import('eslint').Linter.FlatConfig[]} */
 export default tseslint.config(
+  {
+    ignores: [
+      'node_modules/',
+      'apps/**/node_modules/',
+      'apps/storybook/storybook-static/',
+      'packages/**/node_modules/',
+      'packages/**/dist/',
+    ],
+  },
   eslint.configs.recommended,
   {
     plugins: {
