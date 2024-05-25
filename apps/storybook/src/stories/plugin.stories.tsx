@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react'
 import { Playground } from './playground'
 
 const meta = {
-  title: 'Playground',
+  title: 'Documentation/Playground',
   component: Playground,
   args: {
     lightSource: 'tl',

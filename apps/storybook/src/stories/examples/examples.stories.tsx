@@ -6,7 +6,7 @@ import { RecorderAppButton } from './recorder-app-button'
 import { TeslaCybertruckApp } from './tesla-cybertruck-app'
 
 const meta = {
-  title: 'Examples',
+  title: 'Documentation/Examples',
 } satisfies Meta
 
 export default meta
