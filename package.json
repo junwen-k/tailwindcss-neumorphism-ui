@@ -11,7 +11,7 @@
     "test": "turbo test",
     "release": "changeset version",
     "prepack": "copyfiles README.md LICENSE packages/*",
-    "publish-packages": "CI=true turbo run build lint test && changeset publish",
+    "publish-packages": "CI=true turbo run build lint test && pnpm prepack && changeset publish",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "prepare": "husky"
   },
