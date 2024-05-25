@@ -1,0 +1,134 @@
+import { Meta } from '@storybook/blocks'
+
+import Thumbnail from './assets/thumbnail-hd.png'
+
+<Meta title="Introduction" />
+
+<img src={Thumbnail} alt="TailwindCSS Neumorphism" class="rounded-lg" />
+
+<p class="flex gap-2">
+  <a href="https://github.com/junwen-k/tailwindcss-neumorphism-ui/actions">
+    <img
+      src="https://img.shields.io/github/actions/workflow/status/junwen-k/tailwindcss-neumorphism-ui/ci.yml?branch=main"
+      alt="Build Status"
+    />
+  </a>
+  <a href="https://tailwindcss.com/">
+    <img
+      alt="Tailwind"
+      src="https://img.shields.io/badge/tailwindcss-v3.0+-0F172A?logo=tailwindcss&style=flat&labelColor=38bdf8&logoColor=ffffff"
+    />
+  </a>
+  <a href="https://www.npmjs.com/package/tailwindcss-neumorphism-ui">
+    <img src="https://img.shields.io/npm/dm/tailwindcss-neumorphism-ui" alt="Total Downloads" />
+  </a>
+  <a href="https://github.com/junwen-k/tailwindcss-neumorphism-ui/blob/master/LICENSE">
+    <img
+      src="https://img.shields.io/github/license/junwen-k/tailwindcss-neumorphism-ui"
+      alt="License"
+    />
+  </a>
+</p>
+
+<br />
+
+# tailwindcss-neumorphism
+
+A plugin for Tailwind CSS that generates shadow utilities based on [Neumorphism (Soft UI)](https://en.wikipedia.org/wiki/Neumorphism) design.
+
+## Features
+
+- ⚡ Create stunning and realistic shadows with ease.
+- ✨ Modular, flexible, and highly customizable with sensible defaults out of the box.
+
+## Installation
+
+Install the plugin with your favorite package manager:
+
+```sh
+npm install -D tailwindcss-neumorphism-plugin
+```
+
+Then add the plugin to your `tailwind.config.js` file:
+
+```js
+// tailwind.config.js
+module.exports = {
+  content: [],
+  theme: {
+    extend: {},
+  },
+  plugins: [
+    require('tailwindcss-neumorphism-ui')
+
+    // Or with a custom prefix:
+    require('tailwindcss-neumorphism-ui')({ prefix: 'soft-ui' })
+  ],
+}
+```
+
+## Usage
+
+The `tailwindcss-neumorphism` plugin offers a variety of utility classes to create neumorphic effects with ease. Below are some examples and explanations of how to use these utilities effectively.
+
+### Presets
+
+The plugin comes with sensible default utility classes that are ready to use out of the box. These defaults include `nm-protrude` and `nm-dent`, which are shorthands for creating protruding and denting effects respectively. Each of these classes comes with predefined properties:
+
+| Class                    | Properties                                                                       |
+| ------------------------ | -------------------------------------------------------------------------------- |
+| `nm-{protrude/dent}-sm`  | @apply `nm-distance-1` `nm-shadow-black/15` `nm-highlight-white/50` `nm-blur-sm` |
+| `nm-{protrude/dent}`     | @apply `nm-distance-2` `nm-shadow-black/15` `nm-highlight-white/75` `nm-blur-md` |
+| `nm-{protrude/dent}-md`  | @apply `nm-distance-4` `nm-shadow-black/15` `nm-highlight-white/75` `nm-blur-lg` |
+| `nm-{protrude/dent}-lg`  | @apply `nm-distance-4` `nm-shadow-black/20` `nm-highlight-white/75` `nm-blur-lg` |
+| `nm-{protrude/dent}-xl`  | @apply `nm-distance-5` `nm-shadow-black/25` `nm-highlight-white/75` `nm-blur-lg` |
+| `nm-{protrude/dent}-2xl` | @apply `nm-distance-6` `nm-shadow-black/35` `nm-highlight-white` `nm-blur-xl`    |
+
+These classes provide a convenient way to apply neumorphic shadows with sensible defaults that cover most common use cases.
+
+### Customizing Specific Properties
+
+If you need more control over specific properties, you can override the defaults with custom class names. For example, you can use `nm-protrude-xl` to apply a large protruding effect and override the blur value with `nm-blur-sm` and light source direction with `nm-light-source-r`:
+
+```html
+<div class="nm-protrude-xl nm-blur-sm nm-light-source-r">
+  <!-- ... -->
+</div>
+```
+
+This allows for fine-tuned customization while still leveraging the convenience of the default utility classes.
+
+### Advanced Customization
+
+For advanced customization, you can use more granular utility classes. For instance, the `nm-protrude-[numeric]` classes inherits Tailwind's [`spacing`](https://tailwindcss.com/docs/customizing-spacing) theme and only specify the distance between the surface and the element. When using these advanced classes, you will need to manually specify other properties such as shadow color and blur to create the desired effect:
+
+```html
+<div class="nm-protrude-4 nm-blur-sm nm-shadow-gray-500 nm-highlight-white">
+  <!-- ... -->
+</div>
+```
+
+In this example, `nm-protrude-4` sets the protrusion distance, `nm-blur-sm` sets the blur value to small, `nm-shadow-gray-500` sets the shadow color, and `nm-highlight-white` sets the highlight color. This level of customization gives you full control over the neumorphic effect.
+
+### Simulating Curved Surfaces
+
+While this plugin does not include built-in curvature implementations (concave or convex), creating these effects is straightforward using Tailwind CSS's native [bg-gradient](https://tailwindcss.com/docs/background-image) utility. To see practical examples of how to implement curvature effects, visit our [playground](?path=/docs/playground--docs) for demonstrations.
+
+For instance, if the light source is positioned at the top-left, you can create a convex curvature illusion by using `bg-gradient-to-br`, where the starting color (`from`) is the highlight color and the ending color (`to`) is the shadow color. This technique leverages gradients to simulate the light and shadow interplay that produces the curvature effect. However, feel free to adjust the colors based on your visual judgement to achieve the desired effect.
+
+Explore the playground to see more examples and understand how to effectively apply these gradients to achieve the desired visual effects.
+
+## Caveats
+
+While neumorphism can create visually appealing and unique UI effects, it should be used sparingly. Overuse can lead to usability issues, such as poor contrast and accessibility concerns. When applied correctly, however, neumorphism can enhance the user experience and add a modern touch to your design.
+
+## Acknowledgements
+
+- [**Designing Beautiful Shadows in CSS**](https://www.joshwcomeau.com/css/designing-shadows/) ([Joshua Comeau](https://www.joshwcomeau.com))
+  His blog post on realistic shadow rendering inspired many of the techniques used in this plugin. Additionally, his playground offered valuable insights and inspiration for experimenting with shadow properties.
+- [**Neumorphism.io**](https://neumorphism.io/) ([Adam Giebl](https://github.com/adamgiebl))
+  This tool provided valuable insights on creating neumorphic shadows in CSS.
+
+## License
+
+[MIT](https://github.com/junwen-k/tailwindcss-neumorphism-ui/blob/main/LICENSE)

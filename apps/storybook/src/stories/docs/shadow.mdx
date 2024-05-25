@@ -1,0 +1,64 @@
+import { Meta } from '@storybook/blocks'
+
+<Meta title="API Documentation/Shadow" />
+
+# **Protrude / Dent**
+
+> Utilities for generating the neumorphism shadow.
+
+| Class                          | Properties                                                                       |
+| ------------------------------ | -------------------------------------------------------------------------------- |
+| `nm-{protrude/dent}-sm`        | @apply `nm-distance-1` `nm-shadow-black/15` `nm-highlight-white/50` `nm-blur-sm` |
+| `nm-{protrude/dent}`           | @apply `nm-distance-2` `nm-shadow-black/15` `nm-highlight-white/75` `nm-blur-md` |
+| `nm-{protrude/dent}-md`        | @apply `nm-distance-4` `nm-shadow-black/15` `nm-highlight-white/75` `nm-blur-lg` |
+| `nm-{protrude/dent}-lg`        | @apply `nm-distance-4` `nm-shadow-black/20` `nm-highlight-white/75` `nm-blur-lg` |
+| `nm-{protrude/dent}-xl`        | @apply `nm-distance-5` `nm-shadow-black/25` `nm-highlight-white/75` `nm-blur-lg` |
+| `nm-{protrude/dent}-2xl`       | @apply `nm-distance-6` `nm-shadow-black/35` `nm-highlight-white` `nm-blur-xl`    |
+| `nm-{protrude/dent}-{spacing}` | `--nm-shadow-distance: {spacing};`                                               |
+
+## Basic Usage
+
+### Generating neumorphism shadow
+
+To generate a neumorphism shadow, use the `nm-protrude` or `nm-dent` utility classes.
+
+```html
+<div class="nm-protrude ...">...</div>
+<div class="nm-dent ...">...</div>
+```
+
+### Using the spacing variant
+
+When using the spacing variant (nm-{protrude/dent}-{spacing}), you need to specify other properties such as shadow color, blur, and highlight color to achieve the desired effect.
+
+```html
+<div class="nm-protrude-4 nm-blur-sm nm-shadow-gray-500 nm-highlight-white">
+  <!-- ... -->
+</div>
+```
+
+## Applying conditionally
+
+### Hover, focus, and other states
+
+Tailwind lets you conditionally apply utility classes in different states using variant modifiers. For example, use `hover:nm-protrude` to only apply the `nm-protrude` utility on hover.
+
+```html
+<div class="hover:nm-protrude ...">
+  <!-- ... -->
+</div>
+```
+
+For a complete list of all available state modifiers, check out the [Hover, Focus, & Other States](https://tailwindcss.com/docs/hover-focus-and-other-states) documentation.
+
+### Breakpoints and media queries
+
+You can also use variant modifiers to target media queries like responsive breakpoints, dark mode, prefers-reduced-motion, and more. For example, use `md:nm-protrude` to apply the `nm-protrude` utility at only medium screen sizes and above.
+
+```html
+<div class="md:nm-protrude ...">
+  <!-- ... -->
+</div>
+```
+
+To learn more, check out the documentation on [Responsive Design](https://tailwindcss.com/docs/responsive-design), [Dark Mode](https://tailwindcss.com/docs/dark-mode) and [other media query modifiers](https://tailwindcss.com/docs/hover-focus-and-other-states#media-queries).

@@ -1,0 +1,65 @@
+import { Meta } from '@storybook/blocks'
+
+<Meta title="API Documentation/Color" />
+
+# **Color**
+
+> Utilities for adjusting the neumorphism highlight / shadow color.
+
+| Class                           | Properties                                |
+| ------------------------------- | ----------------------------------------- |
+| `nm-{highlight/shadow}-{color}` | `--nm-{highlight/shadow}-color: {color};` |
+
+This utility inherits the default Tailwind CSS `theme.boxShadowColor`. For a complete list of values, check the full documentation [here](https://tailwindcss.com/docs/box-shadow-color).
+
+## Basic Usage
+
+### Controlling color
+
+To give an element a specific neumorphism highlight / shadow color, use the `nm-highlight` and `nm-shadow` utility classes.
+
+```html
+<div class="nm-highlight-cyan-500/50 ...">...</div>
+<div class="nm-shadow-blue-500/50 ...">...</div>
+<div class="nm-shadow-indigo-500/50 ...">...</div>
+```
+
+## Applying conditionally
+
+### Hover, focus, and other states
+
+Tailwind lets you conditionally apply utility classes in different states using variant modifiers. For example, use `hover:nm-shadow-white` to only apply the `nm-shadow-white` utility on hover.
+
+```html
+<div class="hover:nm-shadow-white ...">
+  <!-- ... -->
+</div>
+```
+
+For a complete list of all available state modifiers, check out the [Hover, Focus, & Other States](https://tailwindcss.com/docs/hover-focus-and-other-states) documentation.
+
+### Breakpoints and media queries
+
+You can also use variant modifiers to target media queries like responsive breakpoints, dark mode, prefers-reduced-motion, and more. For example, use `md:nm-highlight-cyan-500/50` to apply the `nm-highlight-cyan-500/50` utility at only medium screen sizes and above.
+
+```html
+<div class="md:nm-highlight-cyan-500/50 ...">
+  <!-- ... -->
+</div>
+```
+
+To learn more, check out the documentation on [Responsive Design](https://tailwindcss.com/docs/responsive-design), [Dark Mode](https://tailwindcss.com/docs/dark-mode) and [other media query modifiers](https://tailwindcss.com/docs/hover-focus-and-other-states#media-queries).
+
+## Using custom values
+
+### Arbitrary values
+
+If you need to use a one-off `nm-highlight` or `nm-shadow` value that doesn’t make sense to include in your theme, use square brackets to generate a property on the fly using any arbitrary value.
+
+```html
+<div class="nm-shadow-[#50d71e] ...">
+  <!-- ... -->
+</div>
+```
+
+Learn more about arbitrary value support in the [arbitrary values](https://tailwindcss.com/docs/adding-custom-styles#using-arbitrary-values) documentation.

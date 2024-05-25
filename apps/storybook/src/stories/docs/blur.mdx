@@ -1,0 +1,68 @@
+import { Meta } from '@storybook/blocks'
+
+<Meta title="API Documentation/Blur" />
+
+# **Blur**
+
+> Utilities for controlling the blur of the neumorphism shadow.
+
+| Class            | Properties                  |
+| ---------------- | --------------------------- |
+| `nm-blur-{blur}` | `--nm-shadow-blur: {blur};` |
+
+This utility inherits the default Tailwind CSS `theme.blur`. For a complete list of values, check the full documentation [here](https://tailwindcss.com/docs/blur).
+
+## Basic Usage
+
+### Controlling blur
+
+To give an element a specific neumorphism shadow blur, use the `nm-blur` utility classes.
+
+```html
+<div class="nm-blur-sm ...">...</div>
+<div class="nm-blur ...">...</div>
+<div class="nm-blur-md ...">...</div>
+<div class="nm-blur-lg ...">...</div>
+<div class="nm-blur-xl ...">...</div>
+<div class="nm-blur-2xl ...">...</div>
+```
+
+## Applying conditionally
+
+### Hover, focus, and other states
+
+Tailwind lets you conditionally apply utility classes in different states using variant modifiers. For example, use `hover:nm-blur-md` to only apply the `nm-blur-md` utility on hover.
+
+```html
+<div class="hover:nm-blur-md ...">
+  <!-- ... -->
+</div>
+```
+
+For a complete list of all available state modifiers, check out the [Hover, Focus, & Other States](https://tailwindcss.com/docs/hover-focus-and-other-states) documentation.
+
+### Breakpoints and media queries
+
+You can also use variant modifiers to target media queries like responsive breakpoints, dark mode, prefers-reduced-motion, and more. For example, use `md:nm-blur-lg` to apply the `nm-blur-lg` utility at only medium screen sizes and above.
+
+```html
+<div class="md:nm-blur-lg ...">
+  <!-- ... -->
+</div>
+```
+
+To learn more, check out the documentation on [Responsive Design](https://tailwindcss.com/docs/responsive-design), [Dark Mode](https://tailwindcss.com/docs/dark-mode) and [other media query modifiers](https://tailwindcss.com/docs/hover-focus-and-other-states#media-queries).
+
+## Using custom values
+
+### Arbitrary values
+
+If you need to use a one-off `nm-blur` value that doesn’t make sense to include in your theme, use square brackets to generate a property on the fly using any arbitrary value.
+
+```html
+<div class="nm-blur-[2px] ...">
+  <!-- ... -->
+</div>
+```
+
+Learn more about arbitrary value support in the [arbitrary values](https://tailwindcss.com/docs/adding-custom-styles#using-arbitrary-values) documentation.

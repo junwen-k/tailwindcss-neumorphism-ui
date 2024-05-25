@@ -1,0 +1,85 @@
+import { Meta } from '@storybook/blocks'
+
+<Meta title="API Documentation/Light Source" />
+
+# **Light Source**
+
+> Utilities for controlling the light source for the neumorphism shadow.
+
+| Class                | Properties                          |
+| -------------------- | ----------------------------------- |
+| `nm-light-source-t`  | `--nm-shadow-light-source: 0deg;`   |
+| `nm-light-source-tr` | `--nm-shadow-light-source: 45deg;`  |
+| `nm-light-source-r`  | `--nm-shadow-light-source: 90deg;`  |
+| `nm-light-source-br` | `--nm-shadow-light-source: 135deg;` |
+| `nm-light-source-b`  | `--nm-shadow-light-source: 180deg;` |
+| `nm-light-source-bl` | `--nm-shadow-light-source: 225deg;` |
+| `nm-light-source-l`  | `--nm-shadow-light-source: 270deg;` |
+| `nm-light-source-tl` | `--nm-shadow-light-source: 315deg;` |
+
+## Basic Usage
+
+### Controlling light source
+
+To give an element a specific neumorphism light source, use the `nm-light-source` utility classes.
+
+```html
+<div class="nm-light-source-tr ...">...</div>
+<div class="nm-light-source-bl ...">...</div>
+```
+
+### Applying light source globally
+
+Often, it's desirable for all elements to share the same light source direction for consistency. The `nm-light-source` utility classes can be placed high in the DOM tree so that all child elements inherit the same light source direction.
+
+For example, in a Next.js app using the App Router, you can set the light source direction globally in the `app/layout.tsx` file:
+
+```tsx
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+  return (
+    <html lang="en" className="nm-light-source-tr">
+      <body>{children}</body>
+    </html>
+  )
+}
+```
+
+## Applying conditionally
+
+### Hover, focus, and other states
+
+Tailwind lets you conditionally apply utility classes in different states using variant modifiers. For example, use `hover:nm-light-source-br` to only apply the `nm-light-source-br` utility on hover.
+
+```html
+<div class="hover:nm-light-source-br ...">
+  <!-- ... -->
+</div>
+```
+
+For a complete list of all available state modifiers, check out the [Hover, Focus, & Other States](https://tailwindcss.com/docs/hover-focus-and-other-states) documentation.
+
+### Breakpoints and media queries
+
+You can also use variant modifiers to target media queries like responsive breakpoints, dark mode, prefers-reduced-motion, and more. For example, use `md:nm-light-source-r` to apply the `nm-light-source-r` utility at only medium screen sizes and above.
+
+```html
+<div class="md:nm-light-source-r ...">
+  <!-- ... -->
+</div>
+```
+
+To learn more, check out the documentation on [Responsive Design](https://tailwindcss.com/docs/responsive-design), [Dark Mode](https://tailwindcss.com/docs/dark-mode) and [other media query modifiers](https://tailwindcss.com/docs/hover-focus-and-other-states#media-queries).
+
+## Using custom values
+
+### Arbitrary values
+
+If you need to use a one-off `nm-light-source` value that doesn’t make sense to include in your theme, use square brackets to generate a property on the fly using any arbitrary value.
+
+```html
+<div class="nm-light-source-[17deg] ...">
+  <!-- ... -->
+</div>
+```
+
+Learn more about arbitrary value support in the [arbitrary values](https://tailwindcss.com/docs/adding-custom-styles#using-arbitrary-values) documentation.
