@@ -12,6 +12,10 @@ node_modules
 .env.test.local
 .env.production.local
 
+# Packages licenses / readme
+packages/*/LICENSE
+packages/*/README.md
+
 # Testing
 coverage
 

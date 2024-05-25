@@ -17,7 +17,8 @@
     "dev": "tsup --watch",
     "build": "tsup",
     "lint": "eslint --max-warnings 0",
-    "test": "vitest"
+    "test": "vitest",
+    "prepack": "cd ../../ && pnpm prepack"
   },
   "devDependencies": {
     "postcss": "^8.4.38",
