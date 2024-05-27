@@ -13,6 +13,10 @@ jobs:
     if: ${{ github.repository_owner == 'junwen-k' }}
     runs-on: ubuntu-latest
 
+    permissions:
+      contents: write
+      pull-requests: write
+
     strategy:
       matrix:
         node-version: [20.13.1]
