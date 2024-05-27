@@ -1,4 +1,4 @@
-![TailwindCSS Neumorphism](/apps/storybook/src/stories/assets/thumbnail.png)
+![TailwindCSS Neumorphism](https://raw.githubusercontent.com/junwen-k/tailwindcss-neumorphism-ui/main/apps/storybook/src/stories/assets/thumbnail.png)
 
 <h1 align="center">TailwindCSS Neumorphism</h1>
 
