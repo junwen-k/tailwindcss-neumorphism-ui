@@ -1,7 +1,7 @@
 {
   "name": "tailwindcss-neumorphism-ui",
   "description": "A plugin for Tailwind CSS that generates shadow utilities based on Neumorphism (Soft UI) design.",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "type": "module",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
