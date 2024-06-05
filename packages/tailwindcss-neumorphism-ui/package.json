@@ -33,7 +33,7 @@
   },
   "devDependencies": {
     "postcss": "^8.4.38",
-    "tsup": "^8.0.2",
+    "tsup": "^8.1.0",
     "vitest": "^1.6.0"
   },
   "peerDependencies": {
