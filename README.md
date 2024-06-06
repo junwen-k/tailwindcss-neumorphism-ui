@@ -22,7 +22,7 @@
     />
   </a>
   <a
-    href="https://github.com/junwen-k/tailwindcss-neumorphism-ui/blob/master/LICENSE"
+    href="https://github.com/junwen-k/tailwindcss-neumorphism-ui/blob/main/LICENSE"
   >
     <img
       src="https://img.shields.io/github/license/junwen-k/tailwindcss-neumorphism-ui"
