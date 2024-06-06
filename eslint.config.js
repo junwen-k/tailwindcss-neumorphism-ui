@@ -4,7 +4,6 @@ import prettier from 'eslint-plugin-prettier/recommended'
 import turbo from 'eslint-plugin-turbo'
 import tseslint from 'typescript-eslint'
 
-/** @type {import('eslint').Linter.FlatConfig[]} */
 export default tseslint.config(
   {
     ignores: [
