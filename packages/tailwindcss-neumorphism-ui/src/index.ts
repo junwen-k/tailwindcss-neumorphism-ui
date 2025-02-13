@@ -1,5 +1,5 @@
 import flattenColorPalette from 'tailwindcss/lib/util/flattenColorPalette'
-import toColorValue from 'tailwindcss/lib/util/toColorValue'
+// import toColorValue from 'tailwindcss/lib/util/toColorValue'
 import plugin from 'tailwindcss/plugin'
 
 interface Options {
@@ -13,6 +13,14 @@ interface Options {
    **/
   prefix?: string
 }
+
+/**
+ * Converts a color value or function to a color value
+ *
+ * @param {string | Function} maybeFunction - The color value or function
+ * @returns {string} - The color value
+ */
+const toColorValue = maybeFunction => (typeof maybeFunction === 'function' ? maybeFunction({}) : maybeFunction);
 
 export default plugin.withOptions<Options>(
   ({ prefix = 'nm' } = {}) =>
