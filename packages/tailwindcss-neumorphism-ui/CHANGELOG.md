@@ -1,5 +1,11 @@
 # tailwindcss-neumorphism-ui
 
+## 1.0.4
+
+### Patch Changes
+
+- [#18](https://github.com/junwen-k/tailwindcss-neumorphism-ui/pull/18) [`022a54f`](https://github.com/junwen-k/tailwindcss-neumorphism-ui/commit/022a54f259a33a00e53cd37182e48b38b026e6cf) Thanks [@junwen-k](https://github.com/junwen-k)! - feat: support tailwind v4
+
 ## 1.0.3
 
 ### Patch Changes
