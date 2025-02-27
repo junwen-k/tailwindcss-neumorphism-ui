@@ -51,59 +51,49 @@ export const Playground = ({
       // top-left
       lightSource === 'tl' &&
         curvature === 'convex' &&
-        'bg-gradient-to-br from-stone-100 to-stone-300',
+        'bg-linear-to-br from-stone-100 to-stone-300',
       lightSource === 'tl' &&
         curvature === 'concave' &&
-        'bg-gradient-to-br from-stone-300 to-stone-100',
+        'bg-linear-to-br from-stone-300 to-stone-100',
       // top
-      lightSource === 't' &&
-        curvature === 'convex' &&
-        'bg-gradient-to-b from-stone-100 to-stone-300',
+      lightSource === 't' && curvature === 'convex' && 'bg-linear-to-b from-stone-100 to-stone-300',
       lightSource === 't' &&
         curvature === 'concave' &&
-        'bg-gradient-to-b from-stone-300 to-stone-100',
+        'bg-linear-to-b from-stone-300 to-stone-100',
       // top-right
       lightSource === 'tr' &&
         curvature === 'convex' &&
-        'bg-gradient-to-bl from-stone-100 to-stone-300',
+        'bg-linear-to-bl from-stone-100 to-stone-300',
       lightSource === 'tr' &&
         curvature === 'concave' &&
-        'bg-gradient-to-bl from-stone-300 to-stone-100',
+        'bg-linear-to-bl from-stone-300 to-stone-100',
       // right
-      lightSource === 'r' &&
-        curvature === 'convex' &&
-        'bg-gradient-to-l from-stone-100 to-stone-300',
+      lightSource === 'r' && curvature === 'convex' && 'bg-linear-to-l from-stone-100 to-stone-300',
       lightSource === 'r' &&
         curvature === 'concave' &&
-        'bg-gradient-to-l from-stone-300 to-stone-100',
+        'bg-linear-to-l from-stone-300 to-stone-100',
       // bottom-right
       lightSource === 'br' &&
         curvature === 'convex' &&
-        'bg-gradient-to-tl from-stone-100 to-stone-300',
+        'bg-linear-to-tl from-stone-100 to-stone-300',
       lightSource === 'br' &&
         curvature === 'concave' &&
-        'bg-gradient-to-tl from-stone-300 to-stone-100',
+        'bg-linear-to-tl from-stone-300 to-stone-100',
       // bottom
-      lightSource === 'b' &&
-        curvature === 'convex' &&
-        'bg-gradient-to-t from-stone-100 to-stone-300',
+      lightSource === 'b' && curvature === 'convex' && 'bg-linear-to-t from-stone-100 to-stone-300',
       lightSource === 'b' &&
         curvature === 'concave' &&
-        'bg-gradient-to-t from-stone-300 to-stone-100',
+        'bg-linear-to-t from-stone-300 to-stone-100',
       // bottom-left
       lightSource === 'bl' &&
         curvature === 'convex' &&
-        'bg-gradient-to-tr from-stone-100 to-stone-300',
+        'bg-linear-to-tr from-stone-100 to-stone-300',
       lightSource === 'bl' &&
         curvature === 'concave' &&
-        'bg-gradient-to-tr from-stone-300 to-stone-100',
+        'bg-linear-to-tr from-stone-300 to-stone-100',
       // left
-      lightSource === 'l' &&
-        curvature === 'convex' &&
-        'bg-gradient-to-r from-stone-100 to-stone-300',
-      lightSource === 'l' &&
-        curvature === 'concave' &&
-        'bg-gradient-to-r from-stone-300 to-stone-100'
+      lightSource === 'l' && curvature === 'convex' && 'bg-linear-to-r from-stone-100 to-stone-300',
+      lightSource === 'l' && curvature === 'concave' && 'bg-linear-to-r from-stone-300 to-stone-100'
     )}
   />
 )

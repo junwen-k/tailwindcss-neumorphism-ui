@@ -2,9 +2,9 @@ import { Link } from '../../components/link'
 
 export const HuaweiHarmonyOSStopwatch = () => (
   <div className="grid gap-2">
-    <div className="flex items-center justify-center rounded-lg bg-gradient-to-b from-gray-700 to-gray-800 p-20">
+    <div className="bg-linear-to-b flex items-center justify-center rounded-lg from-gray-700 to-gray-800 p-20">
       <div className="grid justify-center gap-5">
-        <div className="nm-protrude-4 nm-light-source-t nm-shadow-gray-950/80 nm-highlight-gray-400/40 nm-blur-2xl relative size-60 rounded-full bg-gradient-to-b from-gray-900 to-gray-800 before:absolute before:size-full before:rounded-full before:shadow-[inset_0_0.25rem_0.25rem_var(--tw-shadow-color)] before:shadow-gray-800 after:absolute after:size-full after:rounded-full after:shadow-[inset_0_-0.25rem_0.25rem_var(--tw-shadow-color)] after:shadow-gray-800/50">
+        <div className="nm-protrude-4 nm-light-source-t nm-shadow-gray-950/80 nm-highlight-gray-400/40 nm-blur-2xl bg-linear-to-b relative size-60 rounded-full from-gray-900 to-gray-800 before:absolute before:size-full before:rounded-full before:shadow-[inset_0_0.25rem_0.25rem_var(--tw-shadow-color)] before:shadow-gray-800 after:absolute after:size-full after:rounded-full after:shadow-[inset_0_-0.25rem_0.25rem_var(--tw-shadow-color)] after:shadow-gray-800/50">
           {[60, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55].map((mark, index) => {
             // We calculate the angle by multiplying the index by 30 degrees (since we have 12 numbers, 360 degrees / 12 = 30 degrees for each step). Subtracting 90 degrees aligns the 60 at the top.
             const angle = index * 30 - 90

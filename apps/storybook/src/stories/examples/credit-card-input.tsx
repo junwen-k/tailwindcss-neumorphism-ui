@@ -13,7 +13,7 @@ export const CreditCardInput = () => (
           <div className="flex items-center justify-between gap-4">
             <input
               id="credit-card-input"
-              className="nm-dent-sm hover:nm-dent focus-visible:nm-protrude w-full rounded-md bg-slate-200 bg-none px-3 py-2 transition placeholder:font-mono placeholder:opacity-75 focus-visible:outline-none"
+              className="nm-dent-sm hover:nm-dent focus-visible:nm-protrude focus-visible:outline-hidden w-full rounded-md bg-slate-200 bg-none px-3 py-2 transition placeholder:font-mono placeholder:opacity-75"
               placeholder="0000 0000 0000 0000"
             />
             <button className="nm-protrude hover:nm-protrude-sm active:nm-dent flex aspect-square size-10 items-center justify-center rounded-lg text-slate-500 transition-shadow">
