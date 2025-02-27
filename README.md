@@ -15,6 +15,12 @@
       src="https://img.shields.io/badge/tailwindcss-v3.0+-0F172A?logo=tailwindcss&style=flat&labelColor=38bdf8&logoColor=ffffff"
     />
   </a>
+  <a href="https://tailwindcss.com/">
+    <img
+      alt="Tailwind"
+      src="https://img.shields.io/badge/tailwindcss-v4.0+-0F172A?&logo=tailwindcss&style=flat&labelColor=38bdf8&logoColor=ffffff"
+    />
+  </a>
   <a href="https://www.npmjs.com/package/tailwindcss-neumorphism-ui">
     <img
       src="https://img.shields.io/npm/dm/tailwindcss-neumorphism-ui"
