@@ -9,10 +9,10 @@
     "lint": "eslint --max-warnings 0"
   },
   "dependencies": {
-    "@tabler/icons-react": "^3.5.0",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "tailwind-merge": "^2.3.0"
+    "@tabler/icons-react": "^3.30.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "tailwind-merge": "^3.0.2"
   },
   "devDependencies": {
     "@chromatic-com/storybook": "^3.2.5",
@@ -26,13 +26,13 @@
     "@storybook/react-vite": "^8.6.2",
     "@storybook/test": "^8.6.2",
     "@tailwindcss/postcss": "^4.0.9",
-    "@types/react": "^18.3.3",
-    "@types/react-dom": "^18.2.22",
-    "postcss": "^8.4.38",
-    "remark-gfm": "^4.0.0",
+    "@types/react": "^19.0.10",
+    "@types/react-dom": "^19.0.4",
+    "postcss": "^8.5.3",
+    "remark-gfm": "^4.0.1",
     "storybook": "^8.6.2",
     "tailwindcss": "^4.0.9",
     "tailwindcss-neumorphism-ui": "workspace:*",
-    "typescript": "^5.2.2"
+    "typescript": "^5.7.3"
   }
 }
