@@ -7,7 +7,7 @@ import Cybertruck from '../assets/cybertruck.png'
 const Button = ({ className, ...props }: React.ComponentProps<'button'>) => (
   <button
     className={twMerge(
-      'nm-protrude nm-highlight-zinc-500/40 active:nm-dent active:nm-highlight-zinc-500/40 nm-shadow-zinc-900/80 active:nm-shadow-zinc-900/80 rounded-full bg-gradient-to-br from-zinc-700 to-zinc-900 p-2 text-zinc-500',
+      'nm-protrude nm-highlight-zinc-500/40 active:nm-dent active:nm-highlight-zinc-500/40 nm-shadow-zinc-900/80 active:nm-shadow-zinc-900/80 bg-linear-to-br rounded-full from-zinc-700 to-zinc-900 p-2 text-zinc-500',
       className
     )}
     {...props}
@@ -36,7 +36,7 @@ interface InfoCardProps {
 }
 
 const InfoCard = ({ label, value }: InfoCardProps) => (
-  <button className="nm-protrude nm-highlight-zinc-500/20 nm-shadow-zinc-950 relative flex aspect-square items-end overflow-hidden rounded-md p-3 text-left before:absolute before:bottom-0 before:left-0 before:size-24 before:-translate-x-1/3 before:translate-y-3 before:rounded-full before:bg-gradient-to-br before:from-zinc-900/70 before:to-zinc-900 after:absolute after:bottom-0 after:right-0 after:size-20 after:translate-x-1/4 after:translate-y-1/4 after:rounded-full after:bg-gradient-to-br after:from-zinc-950/40 after:to-zinc-900">
+  <button className="nm-protrude nm-highlight-zinc-500/20 nm-shadow-zinc-950 before:bg-linear-to-br after:bg-linear-to-br relative flex aspect-square items-end overflow-hidden rounded-md p-3 text-left before:absolute before:bottom-0 before:left-0 before:size-24 before:-translate-x-1/3 before:translate-y-3 before:rounded-full before:from-zinc-900/70 before:to-zinc-900 after:absolute after:bottom-0 after:right-0 after:size-20 after:translate-x-1/4 after:translate-y-1/4 after:rounded-full after:from-zinc-950/40 after:to-zinc-900">
     <div className="z-10">
       <p className="text-xs text-zinc-100">{label}</p>
       <p className="text-nowrap text-[0.6rem] text-zinc-500">{value}</p>
@@ -47,7 +47,7 @@ const InfoCard = ({ label, value }: InfoCardProps) => (
 export const TeslaCybertruckApp = () => (
   <div className="grid gap-2">
     <div className="flex items-center justify-center rounded-lg bg-zinc-950 p-20">
-      <div className="w-full max-w-xs overflow-hidden rounded-3xl bg-gradient-to-b from-zinc-700 via-90% to-zinc-950 shadow-lg ring-1 ring-zinc-800">
+      <div className="bg-linear-to-b w-full max-w-xs overflow-hidden rounded-3xl from-zinc-700 via-90% to-zinc-950 shadow-lg ring-1 ring-zinc-800">
         <div className="grid gap-8 p-5">
           <header className="flex items-center justify-between">
             <Button>
@@ -93,7 +93,7 @@ export const TeslaCybertruckApp = () => (
           </header>
           <div className="relative">
             <img src={Cybertruck} alt="Tesla's Cybertruck" className="min-h-40" />
-            <div className="absolute top-1/2 h-1 w-[6.5rem] -translate-y-2.5 translate-x-5 bg-sky-400 blur-sm" />
+            <div className="blur-xs absolute top-1/2 h-1 w-[6.5rem] -translate-y-2.5 translate-x-5 bg-sky-400" />
             <div className="absolute top-1/2 h-1 w-[6.5rem] -translate-y-2.5 translate-x-5 bg-sky-700 blur-md" />
           </div>
           <section className="grid gap-4">
@@ -125,7 +125,7 @@ export const TeslaCybertruckApp = () => (
             </div>
           </section>
         </div>
-        <footer className="relative mt-4 w-full items-center rounded-2xl bg-gradient-to-b from-zinc-800 to-zinc-950 px-6 py-4 ring-1 ring-zinc-600">
+        <footer className="bg-linear-to-b relative mt-4 w-full items-center rounded-2xl from-zinc-800 to-zinc-950 px-6 py-4 ring-1 ring-zinc-600">
           <div className="absolute left-1/2 top-0 h-1 w-12 -translate-x-1/2 translate-y-2 rounded-full bg-zinc-950/80" />
           <div className="grid gap-0.5">
             <p className="text-sm text-zinc-100">A/C is ON</p>

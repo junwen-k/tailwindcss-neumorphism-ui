@@ -19,6 +19,12 @@ import Thumbnail from './assets/thumbnail-hd.png'
       src="https://img.shields.io/badge/tailwindcss-v3.0+-0F172A?logo=tailwindcss&style=flat&labelColor=38bdf8&logoColor=ffffff"
     />
   </a>
+  <a href="https://tailwindcss.com/">
+    <img
+      alt="Tailwind"
+      src="https://img.shields.io/badge/tailwindcss-v4.0+-0F172A?logo=tailwindcss&style=flat&labelColor=38bdf8&logoColor=ffffff"
+    />
+  </a>
   <a href="https://www.npmjs.com/package/tailwindcss-neumorphism-ui">
     <img src="https://img.shields.io/npm/dm/tailwindcss-neumorphism-ui" alt="Total Downloads" />
   </a>
@@ -49,22 +55,11 @@ Install the plugin with your favorite package manager:
 npm install -D tailwindcss-neumorphism-plugin
 ```
 
-Then add the plugin to your `tailwind.config.js` file:
+Then add the plugin to your main `style.css` file:
 
-```js
-// tailwind.config.js
-module.exports = {
-  content: [],
-  theme: {
-    extend: {},
-  },
-  plugins: [
-    require('tailwindcss-neumorphism-ui')
-
-    // Or with a custom prefix:
-    require('tailwindcss-neumorphism-ui')({ prefix: 'soft-ui' })
-  ],
-}
+```diff
+  @import "tailwindcss";
++ @plugin "tailwindcss-neumorphism-plugin";
 ```
 
 ## Usage
