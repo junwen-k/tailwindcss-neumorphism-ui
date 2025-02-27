@@ -1,6 +1,24 @@
-import flattenColorPalette from 'tailwindcss/lib/util/flattenColorPalette'
-import toColorValue from 'tailwindcss/lib/util/toColorValue'
 import plugin from 'tailwindcss/plugin'
+
+// Based on https://github.com/tailwindlabs/tailwindcss/blob/v3/src/util/flattenColorPalette.js.
+const flattenColorPalette = (
+  colors: Record<string, string | Record<string, string>>
+): Record<string, string> =>
+  Object.assign(
+    {},
+    ...Object.entries(colors ?? {}).flatMap(([color, values]) =>
+      typeof values == 'object'
+        ? Object.entries(flattenColorPalette(values)).map(([number, hex]) => ({
+            [color + (number === 'DEFAULT' ? '' : `-${number}`)]: hex,
+          }))
+        : [{ [`${color}`]: values }]
+    )
+  )
+
+// Based on https://github.com/tailwindlabs/tailwindcss/blob/v3/src/util/toColorValue.js.
+function toColorValue(maybeFunction: unknown) {
+  return typeof maybeFunction === 'function' ? maybeFunction({}) : maybeFunction
+}
 
 interface Options {
   /**
