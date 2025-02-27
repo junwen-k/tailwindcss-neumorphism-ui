@@ -7,6 +7,7 @@
     "preinstall": "npx only-allow pnpm",
     "build": "turbo build",
     "dev": "turbo dev",
+    "start": "turbo start",
     "lint": "turbo lint",
     "test": "turbo test",
     "release": "changeset version",
@@ -38,6 +39,7 @@
     "lint-staged": "^15.2.5",
     "prettier": "^3.3.0",
     "prettier-plugin-tailwindcss": "^0.6.1",
+    "serve": "^14.2.4",
     "turbo": "^1.13.3",
     "typescript": "^5.2.2",
     "typescript-eslint": "^7.11.0"
