@@ -34,7 +34,7 @@
   "devDependencies": {
     "postcss": "^8.5.3",
     "tsup": "^8.4.0",
-    "vitest": "^3.0.7"
+    "vitest": "^3.0.8"
   },
   "peerDependencies": {
     "tailwindcss": ">=3.0.0 || >=4.0.0"
