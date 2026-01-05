@@ -32,9 +32,9 @@
     "prepack": "cd ../../ && pnpm prepack"
   },
   "devDependencies": {
-    "postcss": "^8.5.3",
-    "tsup": "^8.5.0",
-    "vitest": "^3.1.4"
+    "postcss": "^8.5.6",
+    "tsup": "^8.5.1",
+    "vitest": "^4.0.16"
   },
   "peerDependencies": {
     "tailwindcss": ">=3.0.0 || >=4.0.0"
