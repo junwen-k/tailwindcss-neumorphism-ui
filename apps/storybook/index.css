@@ -1,6 +1,5 @@
 @import 'tailwindcss';
-
-@plugin 'tailwindcss-neumorphism-ui';
+@import 'tailwindcss-neumorphism-ui';
 
 @theme {
   --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji',

@@ -10,7 +10,7 @@ import { Meta } from '@storybook/blocks'
 | ---------------- | --------------------------- |
 | `nm-blur-{blur}` | `--nm-shadow-blur: {blur};` |
 
-This utility inherits the default Tailwind CSS `theme.blur`. For a complete list of values, check the full documentation [here](https://tailwindcss.com/docs/blur).
+This utility references the Tailwind CSS `--blur-*` theme variables. For a complete list of values, check the full documentation [here](https://tailwindcss.com/docs/blur).
 
 ## Basic Usage
 
@@ -19,8 +19,8 @@ This utility inherits the default Tailwind CSS `theme.blur`. For a complete list
 To give an element a specific neumorphism shadow blur, use the `nm-blur` utility classes.
 
 ```html
+<div class="nm-blur-xs ...">...</div>
 <div class="nm-blur-sm ...">...</div>
-<div class="nm-blur ...">...</div>
 <div class="nm-blur-md ...">...</div>
 <div class="nm-blur-lg ...">...</div>
 <div class="nm-blur-xl ...">...</div>
