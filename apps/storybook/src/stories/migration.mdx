@@ -1,0 +1,105 @@
+import { Meta } from '@storybook/addon-docs/blocks'
+
+<Meta title="Documentation/Migrating from v1 to v2" />
+
+# Migrating from v1 to v2
+
+`tailwindcss-neumorphism-ui` v2 is a complete rewrite for **Tailwind CSS v4**. The plugin is now a pure CSS file using `@theme` and `@utility` directives instead of a JavaScript plugin.
+
+## Requirements
+
+- **Tailwind CSS v4.0+** is required. v2 does **not** support Tailwind CSS v3.
+- If you are still on Tailwind CSS v3, use `tailwindcss-neumorphism-ui@1`.
+
+## Upgrading
+
+### 1. Update the package
+
+```sh
+npm install -D tailwindcss-neumorphism-ui@latest
+```
+
+### 2. Update the import
+
+The plugin is now a CSS file, so it must be imported using `@import` instead of `@plugin`.
+
+```diff
+  @import "tailwindcss";
+- @plugin "tailwindcss-neumorphism-ui";
++ @import "tailwindcss-neumorphism-ui";
+```
+
+### 3. Update removed utilities
+
+#### `prefix` option removed
+
+The `prefix` option is no longer supported. Tailwind CSS v4 `@utility` names are static and cannot be parameterized at runtime.
+
+```diff
+- @plugin "tailwindcss-neumorphism-ui" { prefix: "soft" };
++ @import "tailwindcss-neumorphism-ui";
+```
+
+If you previously used a custom prefix (e.g., `soft-protrude`), you will need to rename all usages to the default `nm-` prefix.
+
+#### `nm-protrude-{number}` / `nm-dent-{number}` removed
+
+The functional numeric distance utilities have been replaced by a composable pattern using `nm-distance-*`:
+
+```diff
+- <div class="nm-protrude-4 nm-blur-sm nm-shadow-gray-500 nm-highlight-white">
++ <div class="nm-protrude nm-distance-4 nm-blur-sm nm-shadow-gray-500 nm-highlight-white">
+```
+
+This also applies to arbitrary values:
+
+```diff
+- <div class="nm-protrude-[2px] ...">
++ <div class="nm-protrude nm-distance-[2px] ...">
+```
+
+#### Bare `nm-blur` removed
+
+The bare `nm-blur` utility (without a size suffix) no longer exists, matching Tailwind CSS v4's approach where blur utilities always require a size. Use a sized variant instead:
+
+```diff
+- <div class="nm-blur ...">
++ <div class="nm-blur-md ...">
+```
+
+### 4. Blur scale changes
+
+Tailwind CSS v4 changed the blur theme values. If you relied on specific blur sizes, note these mappings:
+
+| v3 blur name | v3 value | v4 blur name | v4 value |
+| ------------ | -------- | ------------ | -------- |
+| `blur-sm`    | 4px      | `blur-xs`    | 4px      |
+| `blur`       | 8px      | `blur-sm`    | 8px      |
+| `blur-md`    | 12px     | `blur-md`    | 12px     |
+| `blur-lg`    | 16px     | `blur-lg`    | 16px     |
+| `blur-xl`    | 24px     | `blur-xl`    | 24px     |
+| `blur-2xl`   | 40px     | `blur-2xl`   | 40px     |
+| `blur-3xl`   | 64px     | `blur-3xl`   | 64px     |
+
+The same applies to `nm-blur-*` utilities. For example, if you were using `nm-blur-sm` (4px) in v1, you should now use `nm-blur-xs` (4px) in v2.
+
+### 5. Gradient class names (Tailwind CSS v4)
+
+If you use gradient utilities alongside neumorphism (e.g., for [curved surface effects](?path=/docs/documentation-introduction--docs#simulating-curved-surfaces)), note that Tailwind CSS v4 renamed gradient utilities:
+
+```diff
+- <div class="bg-gradient-to-br from-stone-100 to-stone-300">
++ <div class="bg-linear-to-br from-stone-100 to-stone-300">
+```
+
+## Summary of breaking changes
+
+| Change                 | v1                      | v2                                     |
+| ---------------------- | ----------------------- | -------------------------------------- |
+| Plugin format          | JavaScript (`@plugin`)  | CSS (`@import`)                        |
+| Tailwind CSS support   | v3 and v4 (compat)      | v4 only                                |
+| `prefix` option        | Supported               | Removed                                |
+| `nm-protrude-{number}` | Functional utility      | Use `nm-protrude nm-distance-{number}` |
+| `nm-dent-{number}`     | Functional utility      | Use `nm-dent nm-distance-{number}`     |
+| `nm-blur` (bare)       | Sets `--nm-shadow-blur` | Removed, use `nm-blur-{size}`          |
+| Blur scale             | Follows v3 theme        | Follows v4 theme (`blur-xs` = 4px)     |
