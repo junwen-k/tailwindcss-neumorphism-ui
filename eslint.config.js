@@ -1,6 +1,8 @@
 import eslint from '@eslint/js'
 import importPlugin from 'eslint-plugin-import'
 import prettier from 'eslint-plugin-prettier/recommended'
+// For more info, see https://github.com/storybookjs/eslint-plugin-storybook#configuration-flat-config-format
+import storybook from 'eslint-plugin-storybook'
 import turbo from 'eslint-plugin-turbo'
 import tseslint from 'typescript-eslint'
 
@@ -39,5 +41,6 @@ export default tseslint.config(
       ['turbo']: turbo,
     },
   },
-  prettier
+  prettier,
+  storybook.configs['flat/recommended']
 )
