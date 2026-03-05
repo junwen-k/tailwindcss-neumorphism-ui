@@ -1,4 +1,4 @@
-import { Meta } from '@storybook/blocks'
+import { Meta } from '@storybook/addon-docs/blocks'
 
 <Meta title="API/Shadow" />
 
@@ -6,15 +6,14 @@ import { Meta } from '@storybook/blocks'
 
 > Utilities for generating the neumorphism shadow.
 
-| Class                          | Properties                                                                       |
-| ------------------------------ | -------------------------------------------------------------------------------- |
-| `nm-{protrude/dent}-sm`        | @apply `nm-distance-1` `nm-shadow-black/15` `nm-highlight-white/50` `nm-blur-sm` |
-| `nm-{protrude/dent}`           | @apply `nm-distance-2` `nm-shadow-black/15` `nm-highlight-white/75` `nm-blur-md` |
-| `nm-{protrude/dent}-md`        | @apply `nm-distance-4` `nm-shadow-black/15` `nm-highlight-white/75` `nm-blur-lg` |
-| `nm-{protrude/dent}-lg`        | @apply `nm-distance-4` `nm-shadow-black/20` `nm-highlight-white/75` `nm-blur-lg` |
-| `nm-{protrude/dent}-xl`        | @apply `nm-distance-5` `nm-shadow-black/25` `nm-highlight-white/75` `nm-blur-lg` |
-| `nm-{protrude/dent}-2xl`       | @apply `nm-distance-6` `nm-shadow-black/35` `nm-highlight-white` `nm-blur-xl`    |
-| `nm-{protrude/dent}-{spacing}` | `--nm-shadow-distance: {spacing};`                                               |
+| Class                    | Properties                                                                       |
+| ------------------------ | -------------------------------------------------------------------------------- |
+| `nm-{protrude/dent}-sm`  | @apply `nm-distance-1` `nm-shadow-black/15` `nm-highlight-white/50` `nm-blur-xs` |
+| `nm-{protrude/dent}`     | @apply `nm-distance-2` `nm-shadow-black/15` `nm-highlight-white/75` `nm-blur-md` |
+| `nm-{protrude/dent}-md`  | @apply `nm-distance-4` `nm-shadow-black/15` `nm-highlight-white/75` `nm-blur-lg` |
+| `nm-{protrude/dent}-lg`  | @apply `nm-distance-4` `nm-shadow-black/20` `nm-highlight-white/75` `nm-blur-lg` |
+| `nm-{protrude/dent}-xl`  | @apply `nm-distance-5` `nm-shadow-black/25` `nm-highlight-white/75` `nm-blur-lg` |
+| `nm-{protrude/dent}-2xl` | @apply `nm-distance-6` `nm-shadow-black/35` `nm-highlight-white` `nm-blur-xl`    |
 
 ## Basic Usage
 
@@ -29,10 +28,10 @@ To generate a neumorphism shadow, use the `nm-protrude` or `nm-dent` utility cla
 
 ### Using the spacing variant
 
-When using the spacing variant `nm-{protrude/dent}-{spacing}`, you need to specify other properties such as shadow color, blur, and highlight color to achieve the desired effect.
+When composing from scratch, start with `nm-protrude` or `nm-dent` as the base and override individual properties with modifier utilities:
 
 ```html
-<div class="nm-protrude-4 nm-blur-sm nm-shadow-gray-500 nm-highlight-white">
+<div class="nm-protrude nm-distance-4 nm-blur-sm nm-shadow-gray-500 nm-highlight-white">
   <!-- ... -->
 </div>
 ```

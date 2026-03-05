@@ -1,0 +1,198 @@
+/* Light source direction values for nm-light-source-* utilities */
+@theme {
+  --nm-light-source-t: 0deg;
+  --nm-light-source-tr: 45deg;
+  --nm-light-source-r: 90deg;
+  --nm-light-source-br: 135deg;
+  --nm-light-source-b: 180deg;
+  --nm-light-source-bl: 225deg;
+  --nm-light-source-l: 270deg;
+  --nm-light-source-tl: 315deg;
+}
+
+/* ===========================================================================
+   Base protrude utility
+   Sets all shadow variables + composes with Tailwind v4 shadow/ring layers
+   via --nm-shadow appended to the standard box-shadow composition.
+   =========================================================================== */
+
+@utility nm-protrude {
+  --nm-shadow-distance: 0.5rem;
+  --nm-shadow-blur: 12px;
+  --nm-shadow-color: rgb(0 0 0 / 0.15);
+  --nm-shadow-highlight-color: rgb(255 255 255 / 0.75);
+  --nm-shadow-x: calc(
+    var(--nm-shadow-distance) * calc(sin(var(--nm-shadow-light-source, 315deg)) * -1)
+  );
+  --nm-shadow-y: calc(var(--nm-shadow-distance) * cos(var(--nm-shadow-light-source, 315deg)));
+  --nm-shadow-highlight: calc(var(--nm-shadow-x) * -1) calc(var(--nm-shadow-y) * -1)
+    var(--nm-shadow-blur) var(--nm-shadow-highlight-color);
+  --nm-shadow-cast: var(--nm-shadow-x) var(--nm-shadow-y) var(--nm-shadow-blur)
+    var(--nm-shadow-color);
+  --nm-shadow: var(--nm-shadow-cast, 0 0 #0000), var(--nm-shadow-highlight, 0 0 #0000);
+  box-shadow:
+    var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow),
+    var(--tw-ring-shadow), var(--tw-shadow), var(--nm-shadow, 0 0 #0000);
+}
+
+/* ===========================================================================
+   Base dent utility
+   Same as protrude but --nm-shadow uses inset shadows.
+   =========================================================================== */
+
+@utility nm-dent {
+  --nm-shadow-distance: 0.5rem;
+  --nm-shadow-blur: 12px;
+  --nm-shadow-color: rgb(0 0 0 / 0.15);
+  --nm-shadow-highlight-color: rgb(255 255 255 / 0.75);
+  --nm-shadow-x: calc(
+    var(--nm-shadow-distance) * calc(sin(var(--nm-shadow-light-source, 315deg)) * -1)
+  );
+  --nm-shadow-y: calc(var(--nm-shadow-distance) * cos(var(--nm-shadow-light-source, 315deg)));
+  --nm-shadow-highlight: calc(var(--nm-shadow-x) * -1) calc(var(--nm-shadow-y) * -1)
+    var(--nm-shadow-blur) var(--nm-shadow-highlight-color);
+  --nm-shadow-cast: var(--nm-shadow-x) var(--nm-shadow-y) var(--nm-shadow-blur)
+    var(--nm-shadow-color);
+  --nm-shadow: inset var(--nm-shadow-cast, 0 0 #0000), inset var(--nm-shadow-highlight, 0 0 #0000);
+  box-shadow:
+    var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow),
+    var(--tw-ring-shadow), var(--tw-shadow), var(--nm-shadow, 0 0 #0000);
+}
+
+/* ===========================================================================
+   Protrude preset utilities
+   Each preset @apply's nm-protrude and overrides specific defaults.
+
+   | Class            | Equivalent                                                    |
+   | nm-protrude-sm   | nm-protrude nm-distance-1 nm-shadow-black/15 nm-highlight-white/50  nm-blur-xs  |
+   | nm-protrude      | nm-protrude nm-distance-2 nm-shadow-black/15 nm-highlight-white/75  nm-blur-md  |
+   | nm-protrude-md   | nm-protrude nm-distance-4 nm-shadow-black/15 nm-highlight-white/75  nm-blur-lg  |
+   | nm-protrude-lg   | nm-protrude nm-distance-4 nm-shadow-black/20 nm-highlight-white/75  nm-blur-lg  |
+   | nm-protrude-xl   | nm-protrude nm-distance-5 nm-shadow-black/25 nm-highlight-white/75  nm-blur-lg  |
+   | nm-protrude-2xl  | nm-protrude nm-distance-6 nm-shadow-black/35 nm-highlight-white     nm-blur-xl  |
+   =========================================================================== */
+
+@utility nm-protrude-sm {
+  @apply nm-protrude;
+  --nm-shadow-distance: 0.25rem;
+  --nm-shadow-blur: 4px;
+  --nm-shadow-highlight-color: rgb(255 255 255 / 0.5);
+}
+
+@utility nm-protrude-md {
+  @apply nm-protrude;
+  --nm-shadow-distance: 1rem;
+  --nm-shadow-blur: 16px;
+}
+
+@utility nm-protrude-lg {
+  @apply nm-protrude;
+  --nm-shadow-distance: 1rem;
+  --nm-shadow-blur: 16px;
+  --nm-shadow-color: rgb(0 0 0 / 0.2);
+}
+
+@utility nm-protrude-xl {
+  @apply nm-protrude;
+  --nm-shadow-distance: 1.25rem;
+  --nm-shadow-blur: 16px;
+  --nm-shadow-color: rgb(0 0 0 / 0.25);
+}
+
+@utility nm-protrude-2xl {
+  @apply nm-protrude;
+  --nm-shadow-distance: 1.5rem;
+  --nm-shadow-blur: 24px;
+  --nm-shadow-color: rgb(0 0 0 / 0.35);
+  --nm-shadow-highlight-color: #fff;
+}
+
+/* ===========================================================================
+   Dent preset utilities
+   Each preset @apply's nm-dent and overrides specific defaults.
+
+   | Class         | Equivalent                                                    |
+   | nm-dent-sm    | nm-dent nm-distance-1 nm-shadow-black/15 nm-highlight-white/50  nm-blur-xs  |
+   | nm-dent       | nm-dent nm-distance-2 nm-shadow-black/15 nm-highlight-white/75  nm-blur-md  |
+   | nm-dent-md    | nm-dent nm-distance-4 nm-shadow-black/15 nm-highlight-white/75  nm-blur-lg  |
+   | nm-dent-lg    | nm-dent nm-distance-4 nm-shadow-black/20 nm-highlight-white/75  nm-blur-lg  |
+   | nm-dent-xl    | nm-dent nm-distance-5 nm-shadow-black/25 nm-highlight-white/75  nm-blur-lg  |
+   | nm-dent-2xl   | nm-dent nm-distance-6 nm-shadow-black/35 nm-highlight-white     nm-blur-xl  |
+   =========================================================================== */
+
+@utility nm-dent-sm {
+  @apply nm-dent;
+  --nm-shadow-distance: 0.25rem;
+  --nm-shadow-blur: 4px;
+  --nm-shadow-highlight-color: rgb(255 255 255 / 0.5);
+}
+
+@utility nm-dent-md {
+  @apply nm-dent;
+  --nm-shadow-distance: 1rem;
+  --nm-shadow-blur: 16px;
+}
+
+@utility nm-dent-lg {
+  @apply nm-dent;
+  --nm-shadow-distance: 1rem;
+  --nm-shadow-blur: 16px;
+  --nm-shadow-color: rgb(0 0 0 / 0.2);
+}
+
+@utility nm-dent-xl {
+  @apply nm-dent;
+  --nm-shadow-distance: 1.25rem;
+  --nm-shadow-blur: 16px;
+  --nm-shadow-color: rgb(0 0 0 / 0.25);
+}
+
+@utility nm-dent-2xl {
+  @apply nm-dent;
+  --nm-shadow-distance: 1.5rem;
+  --nm-shadow-blur: 24px;
+  --nm-shadow-color: rgb(0 0 0 / 0.35);
+  --nm-shadow-highlight-color: #fff;
+}
+
+/* ===========================================================================
+   Distance modifier — nm-distance-{n}
+   Only sets --nm-shadow-distance. Use alongside nm-protrude/nm-dent.
+   =========================================================================== */
+
+@utility nm-distance-* {
+  --nm-shadow-distance: --spacing(--value(integer));
+  --nm-shadow-distance: --value([length]);
+}
+
+/* ===========================================================================
+   Blur modifier — nm-blur-{size}
+   =========================================================================== */
+
+@utility nm-blur-* {
+  --nm-shadow-blur: --value(--blur- *, [length]);
+}
+
+/* ===========================================================================
+   Color modifiers — nm-shadow-{color} and nm-highlight-{color}
+   =========================================================================== */
+
+@utility nm-shadow-* {
+  --nm-shadow-color: --value(--color- *, [color]);
+  --nm-shadow-color: --alpha(--value(--color- *, [color]) / calc(--modifier(integer) * 1%));
+}
+
+@utility nm-highlight-* {
+  --nm-shadow-highlight-color: --value(--color- *, [color]);
+  --nm-shadow-highlight-color: --alpha(
+    --value(--color- *, [color]) / calc(--modifier(integer) * 1%)
+  );
+}
+
+/* ===========================================================================
+   Light source modifier — nm-light-source-{direction}
+   =========================================================================== */
+
+@utility nm-light-source-* {
+  --nm-shadow-light-source: --value(--nm-light-source- *, [angle]);
+}

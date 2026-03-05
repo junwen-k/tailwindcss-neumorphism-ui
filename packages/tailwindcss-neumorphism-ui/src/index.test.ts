@@ -1,75 +1,18 @@
-import { Config } from 'tailwindcss'
 import { expect, it } from 'vitest'
 
-import neumorphism from '../src'
-import { html, css, run } from '../vitest/run'
+import { css, run } from '../vitest/run'
 
-it('generates neumorphism shadow utilities', async () => {
-  const config = {
-    content: [
-      {
-        raw: html`
-          <div class="nm-protrude"></div>
-          <div class="nm-dent"></div>
-          <div class="nm-protrude-1"></div>
-          <div class="nm-dent-1"></div>
-          <div class="nm-distance-1"></div>
-          <div class="nm-blur"></div>
-          <div class="nm-shadow-black"></div>
-          <div class="nm-highlight-white"></div>
-          <div class="nm-light-source-tr"></div>
-        `,
-      },
-    ],
-    corePlugins: { preflight: false },
-  } as const satisfies Config
+it('generates neumorphism protrude utilities', async () => {
+  const result = await run(
+    'nm-protrude nm-distance-1 nm-blur-md nm-shadow-black nm-highlight-white nm-light-source-tr'
+  )
 
-  const input = css`
-    @tailwind utilities;
-  `
-
-  const result = await run(input, config)
-
-  expect(result.css).toMatchFormattedCss(css`
-    .nm-dent {
-      --nm-shadow-x: calc(
-        var(--nm-shadow-distance) * calc(sin(var(--nm-shadow-light-source, 315deg)) * -1)
-      );
-      --nm-shadow-y: calc(var(--nm-shadow-distance) * cos(var(--nm-shadow-light-source, 315deg)));
-      --nm-shadow-highlight: calc(var(--nm-shadow-x) * -1) calc(var(--nm-shadow-y) * -1)
-        var(--nm-shadow-blur) var(--nm-shadow-highlight-color);
-      --nm-shadow-cast: var(--nm-shadow-x) var(--nm-shadow-y) var(--nm-shadow-blur)
-        var(--nm-shadow-color);
-      --nm-shadow-distance: 0.5rem;
-      --nm-shadow-blur: 12px;
-      --nm-shadow-color: rgb(0 0 0 / 0.15);
-      --nm-shadow-highlight-color: rgb(255 255 255 / 0.75);
-      --nm-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000),
-        inset var(--nm-shadow-cast, 0 0 #0000), inset var(--nm-shadow-highlight, 0 0 #0000);
-      box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000),
-        var(--tw-shadow), var(--nm-shadow);
-    }
-
+  await expect(result.css).toIncludeCss(css`
     .nm-protrude {
-      --nm-shadow-x: calc(
-        var(--nm-shadow-distance) * calc(sin(var(--nm-shadow-light-source, 315deg)) * -1)
-      );
-      --nm-shadow-y: calc(var(--nm-shadow-distance) * cos(var(--nm-shadow-light-source, 315deg)));
-      --nm-shadow-highlight: calc(var(--nm-shadow-x) * -1) calc(var(--nm-shadow-y) * -1)
-        var(--nm-shadow-blur) var(--nm-shadow-highlight-color);
-      --nm-shadow-cast: var(--nm-shadow-x) var(--nm-shadow-y) var(--nm-shadow-blur)
-        var(--nm-shadow-color);
       --nm-shadow-distance: 0.5rem;
       --nm-shadow-blur: 12px;
       --nm-shadow-color: rgb(0 0 0 / 0.15);
       --nm-shadow-highlight-color: rgb(255 255 255 / 0.75);
-      --nm-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000),
-        var(--nm-shadow-cast, 0 0 #0000), var(--nm-shadow-highlight, 0 0 #0000);
-      box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000),
-        var(--tw-shadow), var(--nm-shadow);
-    }
-
-    .nm-dent-1 {
       --nm-shadow-x: calc(
         var(--nm-shadow-distance) * calc(sin(var(--nm-shadow-light-source, 315deg)) * -1)
       );
@@ -78,207 +21,185 @@ it('generates neumorphism shadow utilities', async () => {
         var(--nm-shadow-blur) var(--nm-shadow-highlight-color);
       --nm-shadow-cast: var(--nm-shadow-x) var(--nm-shadow-y) var(--nm-shadow-blur)
         var(--nm-shadow-color);
-      --nm-shadow-distance: 0.25rem;
-      --nm-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000),
-        inset var(--nm-shadow-cast, 0 0 #0000), inset var(--nm-shadow-highlight, 0 0 #0000);
-      box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000),
-        var(--tw-shadow), var(--nm-shadow);
+      --nm-shadow: var(--nm-shadow-cast, 0 0 #0000), var(--nm-shadow-highlight, 0 0 #0000);
+      box-shadow:
+        var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow),
+        var(--tw-ring-shadow), var(--tw-shadow), var(--nm-shadow, 0 0 #0000);
     }
+  `)
 
+  await expect(result.css).toIncludeCss(css`
     .nm-distance-1 {
-      --nm-shadow-distance: 0.25rem;
+      --nm-shadow-distance: calc(var(--spacing) * 1);
     }
+  `)
 
-    .nm-protrude-1 {
-      --nm-shadow-x: calc(
-        var(--nm-shadow-distance) * calc(sin(var(--nm-shadow-light-source, 315deg)) * -1)
-      );
-      --nm-shadow-y: calc(var(--nm-shadow-distance) * cos(var(--nm-shadow-light-source, 315deg)));
-      --nm-shadow-highlight: calc(var(--nm-shadow-x) * -1) calc(var(--nm-shadow-y) * -1)
-        var(--nm-shadow-blur) var(--nm-shadow-highlight-color);
-      --nm-shadow-cast: var(--nm-shadow-x) var(--nm-shadow-y) var(--nm-shadow-blur)
-        var(--nm-shadow-color);
-      --nm-shadow-distance: 0.25rem;
-      --nm-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000),
-        var(--nm-shadow-cast, 0 0 #0000), var(--nm-shadow-highlight, 0 0 #0000);
-      box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000),
-        var(--tw-shadow), var(--nm-shadow);
+  await expect(result.css).toIncludeCss(css`
+    .nm-blur-md {
+      --nm-shadow-blur: var(--blur-md);
     }
+  `)
 
-    .nm-blur {
-      --nm-shadow-blur: 8px;
-    }
-
-    .nm-highlight-white {
-      --nm-shadow-highlight-color: #fff;
-    }
-
+  await expect(result.css).toIncludeCss(css`
     .nm-shadow-black {
-      --nm-shadow-color: #000;
+      --nm-shadow-color: var(--color-black);
     }
+  `)
 
+  await expect(result.css).toIncludeCss(css`
+    .nm-highlight-white {
+      --nm-shadow-highlight-color: var(--color-white);
+    }
+  `)
+
+  await expect(result.css).toIncludeCss(css`
     .nm-light-source-tr {
-      --nm-shadow-light-source: 45deg;
+      --nm-shadow-light-source: var(--nm-light-source-tr);
     }
   `)
 })
 
-it('supports using arbitrary values', async () => {
-  const config = {
-    content: [
-      {
-        raw: html`
-          <div class="nm-distance-[2px]"></div>
-          <div class="nm-blur-[2px]"></div>
-          <div class="nm-shadow-[#50d71e]"></div>
-          <div class="nm-highlight-[#50d71e]"></div>
-          <div class="nm-light-source-[17deg]"></div>
-        `,
-      },
-    ],
-    corePlugins: { preflight: false },
-  } as const satisfies Config
+it('generates neumorphism dent utilities', async () => {
+  const result = await run('nm-dent')
 
-  const input = css`
-    @tailwind utilities;
-  `
+  await expect(result.css).toIncludeCss(css`
+    .nm-dent {
+      --nm-shadow-distance: 0.5rem;
+      --nm-shadow-blur: 12px;
+      --nm-shadow-color: rgb(0 0 0 / 0.15);
+      --nm-shadow-highlight-color: rgb(255 255 255 / 0.75);
+      --nm-shadow-x: calc(
+        var(--nm-shadow-distance) * calc(sin(var(--nm-shadow-light-source, 315deg)) * -1)
+      );
+      --nm-shadow-y: calc(var(--nm-shadow-distance) * cos(var(--nm-shadow-light-source, 315deg)));
+      --nm-shadow-highlight: calc(var(--nm-shadow-x) * -1) calc(var(--nm-shadow-y) * -1)
+        var(--nm-shadow-blur) var(--nm-shadow-highlight-color);
+      --nm-shadow-cast: var(--nm-shadow-x) var(--nm-shadow-y) var(--nm-shadow-blur)
+        var(--nm-shadow-color);
+      --nm-shadow:
+        inset var(--nm-shadow-cast, 0 0 #0000), inset var(--nm-shadow-highlight, 0 0 #0000);
+      box-shadow:
+        var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow),
+        var(--tw-ring-shadow), var(--tw-shadow), var(--nm-shadow, 0 0 #0000);
+    }
+  `)
+})
 
-  const result = await run(input, config)
+it('generates preset utilities via @apply', async () => {
+  const result = await run('nm-protrude-sm nm-dent-lg')
 
-  expect(result.css).toMatchFormattedCss(css`
+  // nm-protrude-sm: @apply nm-protrude then overrides distance, blur, highlight-color
+  await expect(result.css).toIncludeCss(css`
+    .nm-protrude-sm {
+      --nm-shadow-distance: 0.5rem;
+      --nm-shadow-blur: 12px;
+      --nm-shadow-color: rgb(0 0 0 / 0.15);
+      --nm-shadow-highlight-color: rgb(255 255 255 / 0.75);
+      --nm-shadow-x: calc(
+        var(--nm-shadow-distance) * calc(sin(var(--nm-shadow-light-source, 315deg)) * -1)
+      );
+      --nm-shadow-y: calc(var(--nm-shadow-distance) * cos(var(--nm-shadow-light-source, 315deg)));
+      --nm-shadow-highlight: calc(var(--nm-shadow-x) * -1) calc(var(--nm-shadow-y) * -1)
+        var(--nm-shadow-blur) var(--nm-shadow-highlight-color);
+      --nm-shadow-cast: var(--nm-shadow-x) var(--nm-shadow-y) var(--nm-shadow-blur)
+        var(--nm-shadow-color);
+      --nm-shadow: var(--nm-shadow-cast, 0 0 #0000), var(--nm-shadow-highlight, 0 0 #0000);
+      box-shadow:
+        var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow),
+        var(--tw-ring-shadow), var(--tw-shadow), var(--nm-shadow, 0 0 #0000);
+      --nm-shadow-distance: 0.25rem;
+      --nm-shadow-blur: 4px;
+      --nm-shadow-highlight-color: rgb(255 255 255 / 0.5);
+    }
+  `)
+
+  // nm-dent-lg: @apply nm-dent then overrides distance, blur, shadow-color
+  await expect(result.css).toIncludeCss(css`
+    .nm-dent-lg {
+      --nm-shadow-distance: 0.5rem;
+      --nm-shadow-blur: 12px;
+      --nm-shadow-color: rgb(0 0 0 / 0.15);
+      --nm-shadow-highlight-color: rgb(255 255 255 / 0.75);
+      --nm-shadow-x: calc(
+        var(--nm-shadow-distance) * calc(sin(var(--nm-shadow-light-source, 315deg)) * -1)
+      );
+      --nm-shadow-y: calc(var(--nm-shadow-distance) * cos(var(--nm-shadow-light-source, 315deg)));
+      --nm-shadow-highlight: calc(var(--nm-shadow-x) * -1) calc(var(--nm-shadow-y) * -1)
+        var(--nm-shadow-blur) var(--nm-shadow-highlight-color);
+      --nm-shadow-cast: var(--nm-shadow-x) var(--nm-shadow-y) var(--nm-shadow-blur)
+        var(--nm-shadow-color);
+      --nm-shadow:
+        inset var(--nm-shadow-cast, 0 0 #0000), inset var(--nm-shadow-highlight, 0 0 #0000);
+      box-shadow:
+        var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow),
+        var(--tw-ring-shadow), var(--tw-shadow), var(--nm-shadow, 0 0 #0000);
+      --nm-shadow-distance: 1rem;
+      --nm-shadow-blur: 16px;
+      --nm-shadow-color: rgb(0 0 0 / 0.2);
+    }
+  `)
+})
+
+it('supports arbitrary values', async () => {
+  const result = await run(
+    'nm-distance-[2px] nm-blur-[2px] nm-shadow-[#50d71e] nm-highlight-[#50d71e] nm-light-source-[17deg]'
+  )
+
+  await expect(result.css).toIncludeCss(css`
     .nm-distance-\[2px\] {
       --nm-shadow-distance: 2px;
     }
+  `)
 
+  await expect(result.css).toIncludeCss(css`
     .nm-blur-\[2px\] {
       --nm-shadow-blur: 2px;
     }
+  `)
 
-    .nm-highlight-\[\#50d71e\] {
-      --nm-shadow-highlight-color: #50d71e;
-    }
-
+  await expect(result.css).toIncludeCss(css`
     .nm-shadow-\[\#50d71e\] {
       --nm-shadow-color: #50d71e;
     }
+  `)
 
+  await expect(result.css).toIncludeCss(css`
+    .nm-highlight-\[\#50d71e\] {
+      --nm-shadow-highlight-color: #50d71e;
+    }
+  `)
+
+  await expect(result.css).toIncludeCss(css`
     .nm-light-source-\[17deg\] {
       --nm-shadow-light-source: 17deg;
     }
   `)
 })
 
-it('works seamlessly with native tailwind shadow / ring utilities', async () => {
-  const config = {
-    content: [
-      {
-        raw: html` <div class="nm-protrude shadow shadow-black ring ring-black"></div> `,
-      },
-    ],
-    corePlugins: { preflight: false },
-  } as const satisfies Config
+it('supports color opacity modifiers', async () => {
+  const result = await run('nm-shadow-gray-950/80 nm-highlight-gray-400/40')
 
-  const input = css`
-    @tailwind utilities;
-  `
+  // With opacity modifier, the output includes color-mix for opacity
+  expect(result.css).toContain('.nm-shadow-gray-950\\/80')
+  expect(result.css).toContain(
+    'color-mix(in srgb, oklch(13% 0.028 261.692) calc(80 * 1%), transparent)'
+  )
 
-  const result = await run(input, config)
-
-  expect(result.css).toMatchFormattedCss(css`
-    .shadow {
-      --tw-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
-      --tw-shadow-colored: 0 1px 3px 0 var(--tw-shadow-color), 0 1px 2px -1px var(--tw-shadow-color);
-      box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000),
-        var(--tw-shadow);
-    }
-
-    .shadow-black {
-      --tw-shadow-color: #000;
-      --tw-shadow: var(--tw-shadow-colored);
-    }
-
-    .ring {
-      --tw-ring-offset-shadow: var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width)
-        var(--tw-ring-offset-color);
-      --tw-ring-shadow: var(--tw-ring-inset) 0 0 0 calc(3px + var(--tw-ring-offset-width))
-        var(--tw-ring-color);
-      box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000);
-    }
-
-    .ring-black {
-      --tw-ring-opacity: 1;
-      --tw-ring-color: rgb(0 0 0 / var(--tw-ring-opacity));
-    }
-
-    .nm-protrude {
-      --nm-shadow-x: calc(
-        var(--nm-shadow-distance) * calc(sin(var(--nm-shadow-light-source, 315deg)) * -1)
-      );
-      --nm-shadow-y: calc(var(--nm-shadow-distance) * cos(var(--nm-shadow-light-source, 315deg)));
-      --nm-shadow-highlight: calc(var(--nm-shadow-x) * -1) calc(var(--nm-shadow-y) * -1)
-        var(--nm-shadow-blur) var(--nm-shadow-highlight-color);
-      --nm-shadow-cast: var(--nm-shadow-x) var(--nm-shadow-y) var(--nm-shadow-blur)
-        var(--nm-shadow-color);
-      --nm-shadow-distance: 0.5rem;
-      --nm-shadow-blur: 12px;
-      --nm-shadow-color: rgb(0 0 0 / 0.15);
-      --nm-shadow-highlight-color: rgb(255 255 255 / 0.75);
-      --nm-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000),
-        var(--nm-shadow-cast, 0 0 #0000), var(--nm-shadow-highlight, 0 0 #0000);
-      box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000),
-        var(--tw-shadow), var(--nm-shadow);
-    }
-  `)
+  expect(result.css).toContain('.nm-highlight-gray-400\\/40')
+  expect(result.css).toContain(
+    'color-mix(in srgb, oklch(70.7% 0.022 261.325) calc(40 * 1%), transparent)'
+  )
 })
 
-it('supports customizing utilities prefix', async () => {
-  const config = {
-    content: [
-      {
-        raw: html`
-          <div class="soft-ui-protrude"></div>
-          <div class="soft-ui-dent"></div>
-          <div class="soft-ui-protrude-1"></div>
-          <div class="soft-ui-dent-1"></div>
-          <div class="soft-ui-distance-1"></div>
-          <div class="soft-ui-blur"></div>
-          <div class="soft-ui-shadow-black"></div>
-          <div class="soft-ui-highlight-white"></div>
-          <div class="soft-ui-light-source-tr"></div>
-        `,
-      },
-    ],
-    plugins: [neumorphism({ prefix: 'soft-ui' })],
-    corePlugins: { preflight: false },
-  } as const satisfies Config
+it('composes with native Tailwind v4 shadow and ring utilities', async () => {
+  const result = await run('nm-protrude shadow-md ring-2 ring-blue-500')
 
-  const input = css`
-    @tailwind utilities;
-  `
-
-  const result = await run(input, config)
-
-  expect(result.css).toMatchFormattedCss(css`
-    .soft-ui-dent {
-      --nm-shadow-x: calc(
-        var(--nm-shadow-distance) * calc(sin(var(--nm-shadow-light-source, 315deg)) * -1)
-      );
-      --nm-shadow-y: calc(var(--nm-shadow-distance) * cos(var(--nm-shadow-light-source, 315deg)));
-      --nm-shadow-highlight: calc(var(--nm-shadow-x) * -1) calc(var(--nm-shadow-y) * -1)
-        var(--nm-shadow-blur) var(--nm-shadow-highlight-color);
-      --nm-shadow-cast: var(--nm-shadow-x) var(--nm-shadow-y) var(--nm-shadow-blur)
-        var(--nm-shadow-color);
+  await expect(result.css).toIncludeCss(css`
+    .nm-protrude {
       --nm-shadow-distance: 0.5rem;
       --nm-shadow-blur: 12px;
       --nm-shadow-color: rgb(0 0 0 / 0.15);
       --nm-shadow-highlight-color: rgb(255 255 255 / 0.75);
-      --nm-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000),
-        inset var(--nm-shadow-cast, 0 0 #0000), inset var(--nm-shadow-highlight, 0 0 #0000);
-      box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000),
-        var(--tw-shadow), var(--nm-shadow);
-    }
-
-    .soft-ui-protrude {
       --nm-shadow-x: calc(
         var(--nm-shadow-distance) * calc(sin(var(--nm-shadow-light-source, 315deg)) * -1)
       );
@@ -287,66 +208,37 @@ it('supports customizing utilities prefix', async () => {
         var(--nm-shadow-blur) var(--nm-shadow-highlight-color);
       --nm-shadow-cast: var(--nm-shadow-x) var(--nm-shadow-y) var(--nm-shadow-blur)
         var(--nm-shadow-color);
-      --nm-shadow-distance: 0.5rem;
-      --nm-shadow-blur: 12px;
-      --nm-shadow-color: rgb(0 0 0 / 0.15);
-      --nm-shadow-highlight-color: rgb(255 255 255 / 0.75);
-      --nm-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000),
-        var(--nm-shadow-cast, 0 0 #0000), var(--nm-shadow-highlight, 0 0 #0000);
-      box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000),
-        var(--tw-shadow), var(--nm-shadow);
+      --nm-shadow: var(--nm-shadow-cast, 0 0 #0000), var(--nm-shadow-highlight, 0 0 #0000);
+      box-shadow:
+        var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow),
+        var(--tw-ring-shadow), var(--tw-shadow), var(--nm-shadow, 0 0 #0000);
     }
+  `)
 
-    .soft-ui-dent-1 {
-      --nm-shadow-x: calc(
-        var(--nm-shadow-distance) * calc(sin(var(--nm-shadow-light-source, 315deg)) * -1)
-      );
-      --nm-shadow-y: calc(var(--nm-shadow-distance) * cos(var(--nm-shadow-light-source, 315deg)));
-      --nm-shadow-highlight: calc(var(--nm-shadow-x) * -1) calc(var(--nm-shadow-y) * -1)
-        var(--nm-shadow-blur) var(--nm-shadow-highlight-color);
-      --nm-shadow-cast: var(--nm-shadow-x) var(--nm-shadow-y) var(--nm-shadow-blur)
-        var(--nm-shadow-color);
-      --nm-shadow-distance: 0.25rem;
-      --nm-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000),
-        inset var(--nm-shadow-cast, 0 0 #0000), inset var(--nm-shadow-highlight, 0 0 #0000);
-      box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000),
-        var(--tw-shadow), var(--nm-shadow);
+  await expect(result.css).toIncludeCss(css`
+    .shadow-md {
+      --tw-shadow:
+        0 4px 6px -1px var(--tw-shadow-color, rgb(0 0 0 / 0.1)),
+        0 2px 4px -2px var(--tw-shadow-color, rgb(0 0 0 / 0.1));
+      box-shadow:
+        var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow),
+        var(--tw-ring-shadow), var(--tw-shadow);
     }
+  `)
 
-    .soft-ui-distance-1 {
-      --nm-shadow-distance: 0.25rem;
+  await expect(result.css).toIncludeCss(css`
+    .ring-2 {
+      --tw-ring-shadow: var(--tw-ring-inset,) 0 0 0 calc(2px + var(--tw-ring-offset-width))
+        var(--tw-ring-color, currentcolor);
+      box-shadow:
+        var(--tw-inset-shadow), var(--tw-inset-ring-shadow), var(--tw-ring-offset-shadow),
+        var(--tw-ring-shadow), var(--tw-shadow);
     }
+  `)
 
-    .soft-ui-protrude-1 {
-      --nm-shadow-x: calc(
-        var(--nm-shadow-distance) * calc(sin(var(--nm-shadow-light-source, 315deg)) * -1)
-      );
-      --nm-shadow-y: calc(var(--nm-shadow-distance) * cos(var(--nm-shadow-light-source, 315deg)));
-      --nm-shadow-highlight: calc(var(--nm-shadow-x) * -1) calc(var(--nm-shadow-y) * -1)
-        var(--nm-shadow-blur) var(--nm-shadow-highlight-color);
-      --nm-shadow-cast: var(--nm-shadow-x) var(--nm-shadow-y) var(--nm-shadow-blur)
-        var(--nm-shadow-color);
-      --nm-shadow-distance: 0.25rem;
-      --nm-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000),
-        var(--nm-shadow-cast, 0 0 #0000), var(--nm-shadow-highlight, 0 0 #0000);
-      box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000),
-        var(--tw-shadow), var(--nm-shadow);
-    }
-
-    .soft-ui-blur {
-      --nm-shadow-blur: 8px;
-    }
-
-    .soft-ui-highlight-white {
-      --nm-shadow-highlight-color: #fff;
-    }
-
-    .soft-ui-shadow-black {
-      --nm-shadow-color: #000;
-    }
-
-    .soft-ui-light-source-tr {
-      --nm-shadow-light-source: 45deg;
+  await expect(result.css).toIncludeCss(css`
+    .ring-blue-500 {
+      --tw-ring-color: var(--color-blue-500);
     }
   `)
 })

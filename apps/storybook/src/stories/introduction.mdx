@@ -1,4 +1,4 @@
-import { Meta } from '@storybook/blocks'
+import { Meta } from '@storybook/addon-docs/blocks'
 
 import Thumbnail from './assets/thumbnail-hd.png'
 
@@ -11,12 +11,6 @@ import Thumbnail from './assets/thumbnail-hd.png'
     <img
       src="https://img.shields.io/github/actions/workflow/status/junwen-k/tailwindcss-neumorphism-ui/ci.yml?branch=main"
       alt="Build Status"
-    />
-  </a>
-  <a href="https://tailwindcss.com/">
-    <img
-      alt="Tailwind"
-      src="https://img.shields.io/badge/tailwindcss-v3.0+-0F172A?logo=tailwindcss&style=flat&labelColor=38bdf8&logoColor=ffffff"
     />
   </a>
   <a href="https://tailwindcss.com/">
@@ -55,11 +49,11 @@ Install the plugin with your favorite package manager:
 npm install -D tailwindcss-neumorphism-ui
 ```
 
-Then add the plugin to your main `style.css` file:
+Then import the plugin in your main CSS file:
 
 ```diff
   @import "tailwindcss";
-+ @plugin "tailwindcss-neumorphism-ui";
++ @import "tailwindcss-neumorphism-ui";
 ```
 
 ## Usage
@@ -72,7 +66,7 @@ The plugin comes with sensible default utility classes that are ready to use out
 
 | Class                    | Properties                                                                       |
 | ------------------------ | -------------------------------------------------------------------------------- |
-| `nm-{protrude/dent}-sm`  | @apply `nm-distance-1` `nm-shadow-black/15` `nm-highlight-white/50` `nm-blur-sm` |
+| `nm-{protrude/dent}-sm`  | @apply `nm-distance-1` `nm-shadow-black/15` `nm-highlight-white/50` `nm-blur-xs` |
 | `nm-{protrude/dent}`     | @apply `nm-distance-2` `nm-shadow-black/15` `nm-highlight-white/75` `nm-blur-md` |
 | `nm-{protrude/dent}-md`  | @apply `nm-distance-4` `nm-shadow-black/15` `nm-highlight-white/75` `nm-blur-lg` |
 | `nm-{protrude/dent}-lg`  | @apply `nm-distance-4` `nm-shadow-black/20` `nm-highlight-white/75` `nm-blur-lg` |
@@ -95,21 +89,21 @@ This allows for fine-tuned customization while still leveraging the convenience 
 
 ### Advanced Customization
 
-For advanced customization, you can use more granular utility classes. For instance, the `nm-protrude-[numeric]` classes inherits Tailwind's [`spacing`](https://tailwindcss.com/docs/customizing-spacing) theme and only specify the distance between the surface and the element. When using these advanced classes, you will need to manually specify other properties such as shadow color and blur to create the desired effect:
+For advanced customization, you can use the composable modifier utilities. Start with `nm-protrude` or `nm-dent` as the base, then override individual properties with `nm-distance-*`, `nm-blur-*`, `nm-shadow-*`, and `nm-highlight-*`:
 
 ```html
-<div class="nm-protrude-4 nm-blur-sm nm-shadow-gray-500 nm-highlight-white">
+<div class="nm-protrude nm-distance-4 nm-blur-sm nm-shadow-gray-500 nm-highlight-white">
   <!-- ... -->
 </div>
 ```
 
-In this example, `nm-protrude-4` sets the protrusion distance, `nm-blur-sm` sets the blur value to small, `nm-shadow-gray-500` sets the shadow color, and `nm-highlight-white` sets the highlight color. This level of customization gives you full control over the neumorphic effect.
+In this example, `nm-protrude` applies the base neumorphism effect, `nm-distance-4` overrides the distance, `nm-blur-sm` sets the blur value to small, `nm-shadow-gray-500` sets the shadow color, and `nm-highlight-white` sets the highlight color. This level of customization gives you full control over the neumorphic effect.
 
 ### Simulating Curved Surfaces
 
 While this plugin does not include built-in curvature implementations (concave or convex), creating these effects is straightforward using Tailwind CSS's native [bg-gradient](https://tailwindcss.com/docs/background-image) utility. To see practical examples of how to implement curvature effects, visit our [playground](?path=/docs/documentation-playground--docs) for demonstrations.
 
-For instance, if the light source is positioned at the top-left, you can create a convex curvature illusion by using `bg-gradient-to-br`, where the starting color (`from`) is the highlight color and the ending color (`to`) is the shadow color. This technique leverages gradients to simulate the light and shadow interplay that produces the curvature effect. However, feel free to adjust the colors based on your visual judgement to achieve the desired effect.
+For instance, if the light source is positioned at the top-left, you can create a convex curvature illusion by using `bg-linear-to-br`, where the starting color (`from`) is the highlight color and the ending color (`to`) is the shadow color. This technique leverages gradients to simulate the light and shadow interplay that produces the curvature effect. However, feel free to adjust the colors based on your visual judgement to achieve the desired effect.
 
 Explore the playground to see more examples and understand how to effectively apply these gradients to achieve the desired visual effects.
 
