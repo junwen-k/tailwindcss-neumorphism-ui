@@ -20,7 +20,8 @@
     "directory": "packages/tailwindcss-neumorphism-ui"
   },
   "publishConfig": {
-    "access": "public"
+    "access": "public",
+    "provenance": true
   },
   "files": [
     "src/index.css"
