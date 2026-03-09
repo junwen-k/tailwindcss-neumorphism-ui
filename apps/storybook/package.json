@@ -9,23 +9,23 @@
     "lint": "eslint --max-warnings 0"
   },
   "dependencies": {
-    "@tabler/icons-react": "^3.38.0",
+    "@tabler/icons-react": "^3.40.0",
     "react": "^19.2.4",
     "react-dom": "^19.2.4",
     "tailwind-merge": "^3.5.0"
   },
   "devDependencies": {
     "@chromatic-com/storybook": "^5.0.1",
-    "@storybook/addon-docs": "10.2.15",
-    "@storybook/addon-links": "10.2.15",
-    "@storybook/addon-onboarding": "10.2.15",
-    "@storybook/react-vite": "10.2.15",
+    "@storybook/addon-docs": "10.2.17",
+    "@storybook/addon-links": "10.2.17",
+    "@storybook/addon-onboarding": "10.2.17",
+    "@storybook/react-vite": "10.2.17",
     "@tailwindcss/postcss": "^4.2.1",
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
     "postcss": "^8.5.8",
     "remark-gfm": "^4.0.1",
-    "storybook": "10.2.15",
+    "storybook": "10.2.17",
     "tailwindcss": "^4.2.1",
     "tailwindcss-neumorphism-ui": "workspace:*",
     "typescript": "^5.9.3"
