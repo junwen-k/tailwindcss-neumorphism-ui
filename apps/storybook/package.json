@@ -15,19 +15,19 @@
     "tailwind-merge": "^3.5.0"
   },
   "devDependencies": {
-    "@chromatic-com/storybook": "^5.0.1",
-    "@storybook/addon-docs": "10.2.19",
-    "@storybook/addon-links": "10.2.19",
-    "@storybook/addon-onboarding": "10.2.19",
-    "@storybook/react-vite": "10.2.19",
-    "@tailwindcss/postcss": "^4.2.1",
+    "@chromatic-com/storybook": "^5.0.2",
+    "@storybook/addon-docs": "10.3.3",
+    "@storybook/addon-links": "10.3.3",
+    "@storybook/addon-onboarding": "10.3.3",
+    "@storybook/react-vite": "10.3.3",
+    "@tailwindcss/postcss": "^4.2.2",
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
     "postcss": "^8.5.8",
     "remark-gfm": "^4.0.1",
-    "storybook": "10.2.19",
-    "tailwindcss": "^4.2.1",
+    "storybook": "10.3.3",
+    "tailwindcss": "^4.2.2",
     "tailwindcss-neumorphism-ui": "workspace:*",
-    "typescript": "^5.9.3"
+    "typescript": "^6.0.2"
   }
 }
