@@ -1,3 +1,15 @@
+/*
+  Ensure Tailwind registers @property for all shadow composition variables
+  (--tw-shadow, --tw-inset-shadow, --tw-ring-shadow, --tw-inset-ring-shadow,
+  --tw-ring-offset-shadow) with inherits: false and initial-value: 0 0 #0000.
+
+  Tailwind only emits these @property declarations when at least one native
+  shadow utility is included in the build. Without them, var(--tw-shadow) and
+  friends resolve to an invalid value and box-shadow falls back to none,
+  making nm-protrude / nm-dent invisible on pages with no other shadow classes.
+*/
+@source inline("shadow-none");
+
 /* Light source direction values for nm-light-source-* utilities */
 @theme {
   --nm-light-source-t: 0deg;
