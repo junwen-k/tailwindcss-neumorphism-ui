@@ -1,11 +1,20 @@
 # tailwindcss-neumorphism-ui
 
+## 2.0.1
+
+### Patch Changes
+
+- [#46](https://github.com/junwen-k/tailwindcss-neumorphism-ui/pull/46) [`c2d937a`](https://github.com/junwen-k/tailwindcss-neumorphism-ui/commit/c2d937add5529e35072ce14578180d3b95820aad) Thanks [@junwen-k](https://github.com/junwen-k)! - Fix `nm-protrude` and `nm-dent` being invisible on pages with no native shadow or ring utilities.
+
+  Tailwind only emits `@property` declarations for its shadow composition variables (`--tw-shadow`, `--tw-inset-shadow`, `--tw-ring-shadow`, `--tw-inset-ring-shadow`, `--tw-ring-offset-shadow`) when at least one native shadow or ring utility is included in the build. Without those declarations, `var(--tw-shadow)` resolves as an invalid value and `box-shadow` falls back to `none`, making neumorphism effects invisible.
+
+  Adding `@source inline("shadow-none")` to the plugin CSS ensures these `@property` initializers are always emitted, regardless of whether the user's project uses any other shadow utilities.
+
 ## 2.0.0
 
 ### Major Changes
 
 - [#31](https://github.com/junwen-k/tailwindcss-neumorphism-ui/pull/31) [`cb74077`](https://github.com/junwen-k/tailwindcss-neumorphism-ui/commit/cb74077351d0709a07bfc29733f340a1d05211d0) Thanks [@junwen-k](https://github.com/junwen-k)! - ### Breaking Changes
-
   - **Tailwind CSS v4 only**: Dropped support for Tailwind CSS v3. The minimum required version is now `tailwindcss@4.0.0`.
   - **Pure CSS plugin**: The plugin is now a plain CSS file using `@theme` and `@utility` directives. Import it with `@import "tailwindcss-neumorphism-ui"` instead of `@plugin "tailwindcss-neumorphism-ui"`.
   - **Removed `prefix` option**: Tailwind CSS v4 `@utility` names are static and cannot be parameterized at runtime. All utilities use the `nm-` prefix.
@@ -14,7 +23,6 @@
   - **Blur scale updated to Tailwind CSS v4 values**: `--blur-xs` is now `4px` (was `blur-sm` in v3), `--blur-sm` is now `8px` (was `blur` in v3). If you relied on specific blur sizes, update accordingly.
 
   ### New Features
-
   - **Color opacity modifiers**: Color utilities now support Tailwind v4's opacity modifier syntax (e.g., `nm-shadow-gray-950/80`, `nm-highlight-white/50`).
   - **Composable API**: All presets use `@apply` internally, making the codebase simpler and more maintainable. Presets remain fully standalone — `nm-protrude-xl` works on its own without additional classes.
 
